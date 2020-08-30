@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/projects"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{loadedProject.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="fixed">Project name</ion-label>
+          <ion-input [(ngModel)]="loadedProject.name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="onSaveProject()">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+</ion-content>

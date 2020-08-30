@@ -24,9 +24,8 @@
     <ion-row>
       <ion-col>
         <ion-list>
-          <ion-item *ngFor="let project of projects">
-            <ion-label>{{project.name}}</ion-label>
-          </ion-item>
+          <app-project-item *ngFor="let project of projects"
+          [projectItem]="project"></app-project-item>
         </ion-list>
      </ion-col>
     </ion-row>
