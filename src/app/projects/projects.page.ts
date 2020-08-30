@@ -1,7 +1,7 @@
-import { ProjectsService } from './projects.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Project } from './project.model';
 import { Subscription } from 'rxjs';
+import { ProjectsService } from '../shared/projects.service';
+import { Project } from '../shared/project.model';
 
 
 @Component({
@@ -29,8 +29,9 @@ export class ProjectsPage implements OnInit, OnDestroy  {
   }
 
   onAddProject() {
-    this.projectsService.addProject(this.projectName);
-    console.log(this.projects);
+    if (this.projectName) {
+      this.projectsService.addProject(this.projectName);
+    }
     this.projectName = '';
   }
 

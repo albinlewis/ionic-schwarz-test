@@ -73,7 +73,8 @@ export class ProjectsService {
     console.log(projectName);
     this.projects.push({
       id: uuid.v4(),
-      name: projectName
+      name: projectName,
+      toolName: ''
     });
   }
 

@@ -1,5 +1,5 @@
-import { ProjectsService } from './../projects.service';
-import { Project } from './../project.model';
+import { Project } from './../../shared/project.model';
+import { ProjectsService } from './../../shared/projects.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
