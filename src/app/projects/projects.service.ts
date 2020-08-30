@@ -12,15 +12,18 @@ export class ProjectsService {
   private readonly _projects = new BehaviorSubject<Project[]>([
     {
       id: '1',
-      name:  'Project 1'
+      name:  'Project 1',
+      toolName: ''
     },
     {
       id: '2',
-      name: 'Project 2'
+      name: 'Project 2',
+      toolName: ''
     },
     {
       id: '3',
-      name: 'Project 3'
+      name: 'Project 3',
+      toolName: ''
     }
   ]);
  readonly projects$ = this._projects.asObservable();
