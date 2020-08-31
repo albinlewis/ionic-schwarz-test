@@ -2,6 +2,7 @@ import { Assignment } from 'src/app/shared/assignment.model';
 import { AssignmentsService } from './../../shared/assignments.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { validateTime } from 'src/app/shared/helpers';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -33,10 +34,12 @@ export class AssignmentDetailPage implements OnInit {
   }
 
   onEditAssignment() {
-    if (this.time) {
+    if (this.time && validateTime(this.time)) {
       this.loadedassignment.time = this.time;
       this.assignmentsService.updateAssignment(this.loadedassignment);
       this.router.navigate(['/assignments']);
+    } else {
+      this.time = null;
     }
   }
 

@@ -4,6 +4,7 @@ import { Project } from './../shared/project.model';
 import { ProjectsService } from './../shared/projects.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { validateTime } from '../shared/helpers';
 
 @Component({
   selector: 'app-assignments',
@@ -42,7 +43,7 @@ export class AssignmentsPage implements OnInit, OnDestroy {
 
   onAddAssignment(projectName: string) {
     let assignment: Assignment;
-    if (projectName && this.time) {
+    if (projectName && this.time && validateTime(this.time)) {
        assignment = this.assignmentsService.getAssignmentByName(projectName);
        if (Object.keys(assignment).length > 0) {
          assignment.time += this.time;
@@ -51,6 +52,8 @@ export class AssignmentsPage implements OnInit, OnDestroy {
         console.log(this.date);
         this.assignmentsService.addAssignment(projectName, this.time, this.date);
       }
+    } else {
+      this.time = null;
     }
 
   }
