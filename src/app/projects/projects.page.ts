@@ -19,7 +19,6 @@ export class ProjectsPage implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.projectsSubscription = this.projectsService.projects$.subscribe((projects: Project[]) => {
-     console.log('observable changed');
      this.projects = projects;
     });
   }

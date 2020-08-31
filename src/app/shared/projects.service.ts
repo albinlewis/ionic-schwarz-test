@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from './project.model';
 import * as uuid from 'uuid';
-import { of, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -47,7 +47,6 @@ export class ProjectsService {
   }
 
   addProject(projectName: string) {
-    console.log(projectName);
     this.projects.push({
       id: uuid.v4(),
       name: projectName,

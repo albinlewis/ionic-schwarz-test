@@ -19,7 +19,7 @@ export class AssignmentDetailPage implements OnInit {
     private router: Router,
     private assignmentsService: AssignmentsService
   ) { }
-
+  // paramMap does not need to unsubscribe
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('assignmentId')) {
@@ -29,7 +29,6 @@ export class AssignmentDetailPage implements OnInit {
       }
       const assignmentId = paramMap.get('assignmentId');
       this.loadedassignment = this.assignmentsService.getAssignmentById(assignmentId);
-      console.log(this.loadedassignment);
     });
   }
 

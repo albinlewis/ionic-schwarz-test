@@ -9,14 +9,7 @@ import * as uuid from 'uuid';
 })
 export class AssignmentsService {
   // tslint:disable-next-line: variable-name
-  private readonly _assignments = new BehaviorSubject<Assignment[]>([
-    {
-      id: '1',
-      name: 'Project X',
-      date: '24',
-      time: 2
-    }
-  ]);
+  private readonly _assignments = new BehaviorSubject<Assignment[]>([]);
 
  readonly assignments$ = this._assignments.asObservable();
 
@@ -30,7 +23,7 @@ export class AssignmentsService {
     this._assignments.next(proj);
  }
 
- getAssignmentByName(assignmentName: string) {
+getAssignmentByName(assignmentName: string) {
   return {
     ...this.assignments.find(assignment => {
       return assignment.name === assignmentName;
@@ -46,7 +39,7 @@ getAssignmentById(assignmentId: string) {
   };
 }
 
- addAssignment(projectName: string, time: number, date: string) {
+addAssignment(projectName: string, time: number, date: string) {
    this.assignments.push({
       id: uuid.v4(),
       name: projectName,
@@ -56,14 +49,13 @@ getAssignmentById(assignmentId: string) {
    );
  }
 
- updateAssignment(assignment: Assignment) {
+updateAssignment(assignment: Assignment) {
   this.assignments.forEach((element, index) => {
    if (element.name === assignment.name) {
        this.assignments[index] = assignment;
    }
   });
 }
-
 
 deleteAssignment(assignment: Assignment) {
    const index = this.assignments.findIndex(obj => obj.id === assignment.id);

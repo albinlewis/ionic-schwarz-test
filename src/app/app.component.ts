@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,9 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
+  // toggle the left menu
   toggleMenu() {
-    this.menuCtrl.toggle(); //Add this method to your button click function
+    this.menuCtrl.toggle();
   }
 
   goToDaily() {

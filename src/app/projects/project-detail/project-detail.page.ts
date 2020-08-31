@@ -1,6 +1,6 @@
 import { Project } from './../../shared/project.model';
 import { ProjectsService } from './../../shared/projects.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class ProjectDetailPage implements OnInit {
     private projectsService: ProjectsService
 
   ) { }
-
+ // paramMap does not need to unsubscribe
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('projectId')) {
@@ -27,7 +27,6 @@ export class ProjectDetailPage implements OnInit {
       }
       const projectId = paramMap.get('projectId');
       this.loadedProject = this.projectsService.getProjectById(projectId);
-      console.log(this.loadedProject);
     });
   }
 
