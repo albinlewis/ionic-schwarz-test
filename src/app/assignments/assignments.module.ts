@@ -9,12 +9,21 @@ import { AssignmentsPageRoutingModule } from './assignments-routing.module';
 import { AssignmentsPage } from './assignments.page';
 import { AssignmentItemComponent } from './assignment-item/assignment-item.component';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AssignmentsPageRoutingModule
+    AssignmentsPageRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [AssignmentsPage, AssignmentItemComponent]
 })

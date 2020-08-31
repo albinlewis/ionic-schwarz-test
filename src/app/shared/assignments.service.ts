@@ -30,9 +30,10 @@ export class AssignmentsService {
   };
 }
 
- addAssignment(projectName: string, time: number) {
+ addAssignment(projectName: string, time: number, date: string) {
    this.assignments.push({
       name: projectName,
+      date,
       time
      }
    );

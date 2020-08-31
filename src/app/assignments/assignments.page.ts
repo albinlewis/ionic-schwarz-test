@@ -16,6 +16,7 @@ export class AssignmentsPage implements OnInit, OnDestroy {
   public projectsSubscription: Subscription;
   public assignmentsSubscription: Subscription;
   public time: number;
+  public date = '';
 
   constructor(
     private projectsService: ProjectsService,
@@ -30,7 +31,7 @@ export class AssignmentsPage implements OnInit, OnDestroy {
     this.assignmentsSubscription = this.assignmentsService.assignments$.subscribe((assignments: Assignment[]) => {
       console.log('observable changed');
       this.assignments = assignments;
-     }); 
+     });
   }
 
   ngOnDestroy() {
@@ -45,7 +46,8 @@ export class AssignmentsPage implements OnInit, OnDestroy {
          assignment.time += this.time;
          this.assignmentsService.updateAssignment(assignment);
       } else {
-        this.assignmentsService.addAssignment(projectName, this.time);
+        console.log(this.date);
+        this.assignmentsService.addAssignment(projectName, this.time, this.date);
       }
     }
 
