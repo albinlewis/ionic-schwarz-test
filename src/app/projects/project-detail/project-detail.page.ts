@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProjectDetailPage implements OnInit {
   public loadedProject: Project;
   public newProjectName: string;
+  public toolName: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -33,8 +34,13 @@ export class ProjectDetailPage implements OnInit {
   }
 
   onSaveProject() {
-    this.projectsService.updateProject(this.loadedProject);
-    this.router.navigate(['/projects']);
+    if(this.newProjectName && this.toolName) {
+      this.loadedProject.name = this.newProjectName;
+      this.loadedProject.toolName = this.toolName;
+      this.projectsService.updateProject(this.loadedProject);
+      this.router.navigate(['/projects']);
+    }
+
   }
 
 }

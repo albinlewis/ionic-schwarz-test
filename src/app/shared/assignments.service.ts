@@ -1,6 +1,8 @@
 import { Assignment } from './assignment.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import * as uuid from 'uuid';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,12 @@ import { BehaviorSubject } from 'rxjs';
 export class AssignmentsService {
   // tslint:disable-next-line: variable-name
   private readonly _assignments = new BehaviorSubject<Assignment[]>([
+    {
+      id: '1',
+      name: 'Project X',
+      date: '24',
+      time: 2
+    }
   ]);
 
  readonly assignments$ = this._assignments.asObservable();
@@ -22,16 +30,25 @@ export class AssignmentsService {
     this._assignments.next(proj);
  }
 
- getAssignmentByName(projectName: string) {
+ getAssignmentByName(assignmentName: string) {
   return {
     ...this.assignments.find(assignment => {
-      return assignment.name === projectName;
+      return assignment.name === assignmentName;
+    })
+  };
+}
+
+getAssignmentById(assignmentId: string) {
+  return {
+    ...this.assignments.find(assignment => {
+      return assignment.id === assignmentId;
     })
   };
 }
 
  addAssignment(projectName: string, time: number, date: string) {
    this.assignments.push({
+      id: uuid.v4(),
       name: projectName,
       date,
       time
@@ -46,4 +63,12 @@ export class AssignmentsService {
    }
   });
 }
+
+
+deleteAssignment(assignment: Assignment) {
+   const index = this.assignments.findIndex(obj => obj.id === assignment.id);
+   if (index >= 0) {
+    this.assignments.splice(index, 1);
+  }
+   }
 }

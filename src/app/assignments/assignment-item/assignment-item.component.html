@@ -1,4 +1,5 @@
 <ion-item>
     <ion-label>{{assignmentItem.name}}</ion-label>
     <ion-note slot="end">{{assignmentItem.time + 'h'}}</ion-note>
+        <ion-icon name="chevron-forward-outline" slot="end" [routerLink]="['/assignments', assignmentItem.id]"></ion-icon>
  </ion-item>

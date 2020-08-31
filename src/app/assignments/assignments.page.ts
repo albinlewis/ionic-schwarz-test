@@ -28,6 +28,8 @@ export class AssignmentsPage implements OnInit, OnDestroy {
       this.projects = projects;
      });
 
+    this.date = this.getCurrentDate();
+
     this.assignmentsSubscription = this.assignmentsService.assignments$.subscribe((assignments: Assignment[]) => {
       console.log('observable changed');
       this.assignments = assignments;
@@ -59,6 +61,10 @@ export class AssignmentsPage implements OnInit, OnDestroy {
        totalTime += assignment.time;
     }
     return totalTime;
+  }
+
+  getCurrentDate() {
+    return '';
   }
 
 }
