@@ -14,7 +14,7 @@
         <ion-item>
           <ion-label>Project</ion-label>
           <ion-select cancelText="Cancel" okText="Ok" #select>
-            <ion-select-option *ngFor="let project of projects" value="{{project.name}}">{{project.name}}</ion-select-option>
+            <ion-select-option *ngFor="let project of projects" value="{{project.toolName}}">{{project.name}}</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
@@ -33,6 +33,10 @@
         <ion-list>
           <app-assignment-item *ngFor="let assignment of assignments"
           [assignmentItem]="assignment"></app-assignment-item>
+          <ion-item *ngIf="assignments.length >= 1">
+            <ion-label color="danger">Sum</ion-label>
+            <ion-note slot="end">{{getTotal() + 'h'}}</ion-note>
+         </ion-item>
         </ion-list>
      </ion-col>
     </ion-row>

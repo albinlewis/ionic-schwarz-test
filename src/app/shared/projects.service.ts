@@ -13,36 +13,20 @@ export class ProjectsService {
     {
       id: '1',
       name:  'Project 1',
-      toolName: ''
+      toolName: 'Project 1'
     },
     {
       id: '2',
       name: 'Project 2',
-      toolName: ''
+      toolName: 'Project 2'
     },
     {
       id: '3',
       name: 'Project 3',
-      toolName: ''
+      toolName: 'Project 3'
     }
   ]);
  readonly projects$ = this._projects.asObservable();
-
-
- /*  private projects: Project[] = [
-    {
-      id: '1',
-      name:  'Project 1'
-    },
-    {
-      id: '2',
-      name: 'Project 2'
-    },
-    {
-      id: '3',
-      name: 'Project 3'
-    }
-  ]; */
 
   constructor() {
   }
@@ -54,14 +38,7 @@ export class ProjectsService {
      this._projects.next(proj);
   }
 
-/*    getAllProjects() {
-     return this.projects;
-    this.project.next(this.projects);
-   return of([...this.projects]);
-  }  */
-
   getProjectById(projectId: string) {
-    console.log(projectId);
     return {
       ...this.projects.find(project => {
         return project.id === projectId;

@@ -38,11 +38,25 @@ export class AssignmentsPage implements OnInit, OnDestroy {
   }
 
   onAddAssignment(projectName: string) {
-    console.log(projectName);
+    let assignment: Assignment;
     if (projectName && this.time) {
-      this.assignmentsService.addAssignment(projectName, this.time.toString());
+       assignment = this.assignmentsService.getAssignmentByName(projectName);
+       if (Object.keys(assignment).length > 0) {
+         assignment.time += this.time;
+         this.assignmentsService.updateAssignment(assignment);
+      } else {
+        this.assignmentsService.addAssignment(projectName, this.time);
+      }
     }
 
+  }
+
+  getTotal() {
+    let totalTime = 0;
+    for (const assignment of this.assignments) {
+       totalTime += assignment.time;
+    }
+    return totalTime;
   }
 
 }

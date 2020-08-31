@@ -22,11 +22,27 @@ export class AssignmentsService {
     this._assignments.next(proj);
  }
 
- addAssignment(projectName: string, time: string) {
+ getAssignmentByName(projectName: string) {
+  return {
+    ...this.assignments.find(assignment => {
+      return assignment.name === projectName;
+    })
+  };
+}
+
+ addAssignment(projectName: string, time: number) {
    this.assignments.push({
       name: projectName,
       time
      }
-   )
+   );
  }
+
+ updateAssignment(assignment: Assignment) {
+  this.assignments.forEach((element, index) => {
+   if (element.name === assignment.name) {
+       this.assignments[index] = assignment;
+   }
+  });
+}
 }
