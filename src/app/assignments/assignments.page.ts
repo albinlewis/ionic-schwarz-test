@@ -17,6 +17,9 @@ export class AssignmentsPage implements OnInit, OnDestroy {
   public projectsSubscription: Subscription;
   public assignmentsSubscription: Subscription;
   public time: number;
+  public breakTime: string;
+  public startTime: string;
+  public endTime: string;
   public date = '';
 
   constructor(

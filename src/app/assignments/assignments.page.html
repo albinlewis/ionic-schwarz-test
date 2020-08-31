@@ -24,6 +24,18 @@
     <ion-row>
       <ion-col>
         <ion-item>
+          <ion-label>Arrive</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="startTime"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Leave</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="endTime"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Pause</ion-label>
+          <ion-input placeholder="h" [(ngModel)]="breakTime" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label>Project</ion-label>
           <ion-select cancelText="Cancel" okText="Ok" #select>
             <ion-select-option *ngFor="let project of projects" value="{{project.toolName}}">{{project.name}}</ion-select-option>
